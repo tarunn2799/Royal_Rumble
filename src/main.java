@@ -1,3 +1,5 @@
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -12,25 +14,42 @@ public class main {
     public static void main(String[] args){
 
         ArrayList <King> orderKings = new ArrayList<King>();
+        InputStreamReader r=new InputStreamReader(System.in);
+        BufferedReader br=new BufferedReader(r);
+        int n;
 
-        King philipII = new King("Philip", "II");
-        King charlesI = new King("Charles", "I");
-        King alfonsoXIII = new King("Alfonso", "XIII");
-        King fernandoXIV = new King("Fernando", "XIV");
-        King fernandoXXIV = new King("Fernando", "XXIV");
-        King philipIV = new King("Philip", "IV");
+        System.out.print("Enter number of Kings: ");
+        try {
+            n = Integer.parseInt(br.readLine());
 
-        orderKings.add(philipII);
-        orderKings.add(charlesI);
-        orderKings.add(alfonsoXIII);
-        orderKings.add(fernandoXIV);
-        orderKings.add(fernandoXXIV);
-        orderKings.add(philipIV);
+            for (int i = 0; i < n; i++) {
+                String name = br.readLine();
+                String[] arr = name.split("\\s");
 
-        Collections.sort(orderKings);
+                orderKings.add(new King(arr[0], arr[1]));
+            }
 
-        for(King king: orderKings){
-            System.out.println(king.toString());
+//        King philipII = new King("Philip", "II");
+//        King charlesI = new King("Charles", "I");
+//        King alfonsoXIII = new King("Alfonso", "XIII");
+//        King fernandoXIV = new King("Fernando", "XIV");
+//        King fernandoXXIV = new King("Fernando", "XXIV");
+//        King philipIV = new King("Philip", "IV");
+//
+//        orderKings.add(philipII);
+//        orderKings.add(charlesI);
+//        orderKings.add(alfonsoXIII);
+//        orderKings.add(fernandoXIV);
+//        orderKings.add(fernandoXXIV);
+//        orderKings.add(philipIV);
+
+            Collections.sort(orderKings);
+
+            for (King king : orderKings) {
+                System.out.println(king.toString());
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 }
